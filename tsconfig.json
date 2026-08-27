@@ -1,0 +1,34 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  // TypeScript is used here for editor hints and data-shape documentation,
+  // not as a build step or a strict gatekeeper. Vite/esbuild does the compiling.
+  "compilerOptions": {
+    // Environment Settings
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "types": ["node", "vite/client"],
+
+    // No Outputs — Vite handles the build, tsc only type-checks
+    "noEmit": true,
+
+    // Relaxed Typechecking
+    // Types are here to describe data, so untyped code stays valid.
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "allowJs": true,
+    "checkJs": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    // Recommended Options
+    "jsx": "react-jsx",
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true
+  },
+  "include": ["src", "vite.config.js", "eslint.config.js"]
+}
