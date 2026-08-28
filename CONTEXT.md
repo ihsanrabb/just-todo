@@ -55,8 +55,16 @@ No Tailwind, no Sass, no CSS-in-JS, no UI kits.
 
 ## Conventions
 
-- `src/` for source, `src/assets/` for imported assets, `public/` for files
-  served as-is.
+### Folder structure
+
+| Path | Purpose |
+| --- | --- |
+| `src/components/ui` | reusable content components |
+| `src/pages` | page / route-level components |
+| `src/styles` | reusable styling |
+| `src/assets` | imported assets |
+| `public/` | files served as-is |
+
 - Components use the `.jsx` extension.
 - Formatting is Biome's job — don't hand-format, and don't argue with it.
 - Commit messages follow Conventional Commits.
