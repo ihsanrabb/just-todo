@@ -11,6 +11,33 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
+  /* Design tokens: core palette */
+  --color-bg: #d6d3d0;
+  --color-surface: #f2f0ee;
+  --color-surface-alt: #e5e3e1;
+  --color-border: #c4c0bd;
+  --color-text-primary: #263a27;
+  --color-text-secondary: #5c6362;
+  --color-text-disabled: #899897;
+  --color-primary: #325d33;
+  --color-primary-hover: #2a4f2b;
+  --color-primary-pressed: #223f23;
+  --color-accent: #466658;
+  --color-mauve: #a79a97;
+  --color-danger: #8c4a3f;
+  --color-focus-ring: #466658;
+  --color-on-primary: #f2f0ee;
+
+  /* Design tokens: category colors */
+  --color-cat-moss: #466658;
+  --color-cat-fern: #6f8f6a;
+  --color-cat-clay: #b2705a;
+  --color-cat-ochre: #bf9a4e;
+  --color-cat-slate: #5f7d8c;
+  --color-cat-plum: #8a6480;
+  --color-cat-mauve: #a79a97;
+  --color-cat-ink: #4a4f45;
+
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
