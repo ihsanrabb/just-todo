@@ -1,5 +1,6 @@
 import { Button } from '../components/ui/Button.jsx'
 import CycleIndicator from '../components/ui/CycleIndicator.jsx'
+import { Icon } from '../components/ui/Icon.jsx'
 import TaskCard, { TaskCardDropSlot } from '../components/ui/TaskCard.jsx'
 import './UiGalleryPage.css'
 
@@ -31,6 +32,8 @@ const CATEGORY_TOKENS = [
   '--color-cat-mauve',
   '--color-cat-ink',
 ]
+
+const ICON_NAMES = ['chevron-left', 'trash-2', 'plus', 'minus', 'bell', 'x']
 
 function UiGalleryPage() {
   return (
@@ -111,6 +114,44 @@ function UiGalleryPage() {
         <Button variant="primary" fullWidth>
           Full Width Primary
         </Button>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-icons-heading"
+      >
+        <h2 id="ui-icons-heading">Icons</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          {ICON_NAMES.map((name) => (
+            <div
+              key={name}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+            >
+              <Icon name={name} />
+              <span>{name}</span>
+            </div>
+          ))}
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            gap: '16px',
+          }}
+        >
+          <Icon name="bell" size={16} />
+          <Icon name="bell" size={24} />
+          <Icon name="bell" size={32} />
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          <Icon name="bell" label="Notifications" />
+        </div>
       </section>
 
       {/* Mount point: Input component */}
