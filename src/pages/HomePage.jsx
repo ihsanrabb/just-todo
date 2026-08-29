@@ -1,16 +1,11 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import UiGalleryPage from './pages/UiGalleryPage'
-import './App.css'
+import heroImg from '../assets/hero.png'
+import reactLogo from '../assets/react.svg'
+import viteLogo from '../assets/vite.svg'
+import './HomePage.css'
 
-function App() {
+function HomePage() {
   const [count, setCount] = useState(0)
-
-  if (window.location.pathname === '/ui') {
-    return <UiGalleryPage />
-  }
 
   return (
     <>
@@ -23,7 +18,8 @@ function App() {
         <div>
           <h1>Get started</h1>
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            Edit <code>src/pages/HomePage.jsx</code> and save to test{' '}
+            <code>HMR</code>
           </p>
         </div>
         <button
@@ -124,4 +120,4 @@ function App() {
   )
 }
 
-export default App
+export default HomePage
