@@ -17,7 +17,9 @@ export function ProgressDots({ value = 0, target = 0, showCount = false }) {
             width: '6px',
             height: '6px',
             borderRadius: '50%',
-            background: isFilled ? 'var(--color-primary)' : 'var(--color-border)',
+            background: isFilled
+              ? 'var(--color-primary)'
+              : 'var(--color-border)',
           }}
         />
       ))}
