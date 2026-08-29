@@ -1,6 +1,21 @@
-import { useId, useState } from 'react'
+import {
+  type ChangeEvent,
+  type FocusEvent,
+  type KeyboardEvent,
+  useId,
+  useState,
+} from 'react'
 import './Stepper.css'
-import { Icon } from './Icon.jsx'
+import { Icon } from '../Icon'
+
+export type StepperProps = {
+  label?: string
+  value: number
+  onChange: (value: number) => void
+  min?: number
+  max?: number
+  disabled?: boolean
+}
 
 export function Stepper({
   label,
@@ -9,16 +24,16 @@ export function Stepper({
   min = 1,
   max = 8,
   disabled = false,
-}) {
+}: StepperProps) {
   const inputId = useId()
-  const [draft, setDraft] = useState(null)
+  const [draft, setDraft] = useState<string | null>(null)
 
-  const commit = (next) => {
+  const commit = (next: number) => {
     const clamped = Math.min(max, Math.max(min, next))
     onChange(clamped)
   }
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDraft(e.target.value)
   }
 
@@ -29,9 +44,9 @@ export function Stepper({
     setDraft(null)
   }
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.target.blur()
+      ;(e.target as HTMLInputElement).blur()
     }
   }
 

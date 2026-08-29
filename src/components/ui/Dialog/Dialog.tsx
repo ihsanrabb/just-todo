@@ -1,5 +1,16 @@
+import type { ReactNode } from 'react'
 import './Dialog.css'
-import { Button } from './Button.jsx'
+import { Button } from '../Button'
+
+export type DialogProps = {
+  title?: ReactNode
+  children?: ReactNode
+  confirmLabel?: ReactNode
+  cancelLabel?: ReactNode
+  onConfirm?: () => void
+  onCancel?: () => void
+  destructive?: boolean
+}
 
 export function Dialog({
   title,
@@ -9,7 +20,7 @@ export function Dialog({
   onConfirm,
   onCancel,
   destructive = false,
-}) {
+}: DialogProps) {
   const titleId = 'ui-dialog-title'
 
   return (

@@ -1,11 +1,19 @@
+import type { ReactNode } from 'react'
 import './TimerDisplay.css'
+
+export type TimerDisplayProps = {
+  remainingSeconds: number
+  totalMinutes: number
+  phase?: ReactNode
+  task?: ReactNode
+}
 
 export function TimerDisplay({
   remainingSeconds,
   totalMinutes,
   phase = 'Focus',
   task,
-}) {
+}: TimerDisplayProps) {
   const minutes = Math.floor(remainingSeconds / 60)
   const seconds = remainingSeconds % 60
   const countdown = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`

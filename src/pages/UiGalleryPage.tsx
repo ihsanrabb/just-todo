@@ -1,18 +1,22 @@
 import { useState } from 'react'
-import AppHeader from '../components/ui/AppHeader.jsx'
-import { Button } from '../components/ui/Button.jsx'
-import { CategoryChip } from '../components/ui/CategoryChip.jsx'
-import CycleIndicator from '../components/ui/CycleIndicator.jsx'
-import { Dialog } from '../components/ui/Dialog.jsx'
-import { EmptyState } from '../components/ui/EmptyState.jsx'
-import { Icon } from '../components/ui/Icon.jsx'
-import { PermissionPrimingCard } from '../components/ui/PermissionPrimingCard.jsx'
-import { SegmentedControl } from '../components/ui/SegmentedControl.jsx'
-import { Stepper } from '../components/ui/Stepper.jsx'
-import TaskCard, { TaskCardDropSlot } from '../components/ui/TaskCard.jsx'
-import { TextField } from '../components/ui/TextField.jsx'
-import { TimerDisplay } from '../components/ui/TimerDisplay.jsx'
-import { Toast } from '../components/ui/Toast.jsx'
+import {
+  AppHeader,
+  Button,
+  CategoryChip,
+  CycleIndicator,
+  Dialog,
+  EmptyState,
+  Icon,
+  type IconName,
+  PermissionPrimingCard,
+  SegmentedControl,
+  Stepper,
+  TaskCard,
+  TaskCardDropSlot,
+  TextField,
+  TimerDisplay,
+  Toast,
+} from '../components/ui'
 import './UiGalleryPage.css'
 
 const PALETTE_TOKENS = [
@@ -44,7 +48,14 @@ const CATEGORY_TOKENS = [
   '--color-cat-ink',
 ]
 
-const ICON_NAMES = ['chevron-left', 'trash-2', 'plus', 'minus', 'bell', 'x']
+const ICON_NAMES: IconName[] = [
+  'chevron-left',
+  'trash-2',
+  'plus',
+  'minus',
+  'bell',
+  'x',
+]
 
 function UiGalleryPage() {
   const [filledValue, setFilledValue] = useState('Buy groceries')

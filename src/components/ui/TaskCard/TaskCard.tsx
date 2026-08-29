@@ -1,5 +1,18 @@
+import type { ReactNode } from 'react'
 import './TaskCard.css'
-import { ProgressDots } from './ProgressDots.jsx'
+import { ProgressDots } from '../ProgressDots'
+import type { CategoryColor } from '../types'
+
+export type TaskCardState = 'dragging' | 'focused' | 'pressed'
+
+export type TaskCardProps = {
+  title?: ReactNode
+  description?: ReactNode
+  category?: CategoryColor
+  value?: number
+  target?: number
+  state?: TaskCardState
+}
 
 export default function TaskCard({
   title,
@@ -8,7 +21,7 @@ export default function TaskCard({
   value = 0,
   target = 0,
   state,
-}) {
+}: TaskCardProps) {
   const completed = value >= target
   const overTarget = value > target
   const partial = value > 0 && value < target

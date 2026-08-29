@@ -1,6 +1,15 @@
+import type { ReactNode } from 'react'
 import './EmptyState.css'
-import { Button } from './Button.jsx'
-import { Icon } from './Icon.jsx'
+import { Button } from '../Button'
+import { Icon } from '../Icon'
+
+export type EmptyStateProps = {
+  title?: ReactNode
+  body?: ReactNode
+  actionLabel?: ReactNode
+  onAction?: () => void
+  icon?: ReactNode
+}
 
 export function EmptyState({
   title,
@@ -8,7 +17,7 @@ export function EmptyState({
   actionLabel,
   onAction,
   icon = <Icon name="plus" size={32} />,
-}) {
+}: EmptyStateProps) {
   return (
     <div className="ui-empty-state">
       <div className="ui-empty-state-icon">{icon}</div>

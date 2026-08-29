@@ -1,6 +1,17 @@
+import type { ReactNode } from 'react'
 import './PermissionPrimingCard.css'
-import { Button } from './Button.jsx'
-import { Icon } from './Icon.jsx'
+import { Button } from '../Button'
+import { Icon, type IconName } from '../Icon'
+
+export type PermissionPrimingCardProps = {
+  title?: ReactNode
+  body?: ReactNode
+  allowLabel?: ReactNode
+  dismissLabel?: ReactNode
+  onAllow?: () => void
+  onDismiss?: () => void
+  icon?: IconName
+}
 
 export function PermissionPrimingCard({
   title = 'Stay on track',
@@ -10,7 +21,7 @@ export function PermissionPrimingCard({
   onAllow,
   onDismiss,
   icon = 'bell',
-}) {
+}: PermissionPrimingCardProps) {
   return (
     <article className="ui-priming-card">
       <span className="ui-priming-card__chip" aria-hidden="true">

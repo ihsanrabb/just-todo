@@ -1,6 +1,21 @@
 import './SegmentedControl.css'
 
-export function SegmentedControl({ name, options, value, onChange }) {
+export type SegmentedControlOption = { label: string; value: string }
+
+export type SegmentedControlProps = {
+  name?: string
+  /** Accepts plain strings, which are expanded to `{ label: value, value }`. */
+  options: Array<string | SegmentedControlOption>
+  value?: string
+  onChange: (value: string) => void
+}
+
+export function SegmentedControl({
+  name,
+  options,
+  value,
+  onChange,
+}: SegmentedControlProps) {
   const normalized = options.map((option) =>
     typeof option === 'string' ? { label: option, value: option } : option,
   )

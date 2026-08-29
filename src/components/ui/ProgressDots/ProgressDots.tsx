@@ -1,5 +1,15 @@
-// TEMPORARY STUB — ProgressDots does not exist on any branch yet (PRD blocker, option c). Delete this file once the real primitive lands and re-point TaskCard.jsx at it; do not extend, restyle, or treat this as final.
-export function ProgressDots({ value = 0, target = 0, showCount = false }) {
+// TEMPORARY STUB — ProgressDots does not exist on any branch yet (PRD blocker, option c). Delete this file once the real primitive lands and re-point TaskCard.tsx at it; do not extend, restyle, or treat this as final.
+export type ProgressDotsProps = {
+  value?: number
+  target?: number
+  showCount?: boolean
+}
+
+export function ProgressDots({
+  value = 0,
+  target = 0,
+  showCount = false,
+}: ProgressDotsProps) {
   const total = Math.max(target, 0)
   const filled = Math.min(Math.max(value, 0), total)
   const dots = Array.from({ length: total }, (_, i) => i < filled)

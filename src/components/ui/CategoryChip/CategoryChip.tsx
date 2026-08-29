@@ -1,5 +1,15 @@
+import type { MouseEventHandler, ReactNode } from 'react'
 import './CategoryChip.css'
-import { Icon } from './Icon.jsx'
+import { Icon } from '../Icon'
+import type { CategoryColor } from '../types'
+
+export type CategoryChipProps = {
+  label?: ReactNode
+  color?: CategoryColor
+  selected?: boolean
+  variant?: 'default' | 'new'
+  onClick?: MouseEventHandler<HTMLButtonElement>
+}
 
 export function CategoryChip({
   label,
@@ -7,7 +17,7 @@ export function CategoryChip({
   selected = false,
   variant = 'default',
   onClick,
-}) {
+}: CategoryChipProps) {
   const isNew = variant === 'new'
   const cls = [
     'ui-category-chip',

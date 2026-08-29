@@ -1,5 +1,19 @@
+import type { ReactNode } from 'react'
 import './AppHeader.css'
-import { Icon } from './Icon.jsx'
+import { Icon, type IconName } from '../Icon'
+
+export type AppHeaderVariant = 'detail' | 'focus' | 'home' | 'settings'
+
+export type AppHeaderProps = {
+  variant?: AppHeaderVariant
+  title?: ReactNode
+  onBack?: () => void
+  backLabel?: string
+  destructive?: boolean
+  trailingIcon?: IconName
+  onTrailing?: () => void
+  trailingLabel?: string
+}
 
 export default function AppHeader({
   variant = 'detail',
@@ -10,7 +24,7 @@ export default function AppHeader({
   trailingIcon,
   onTrailing,
   trailingLabel,
-}) {
+}: AppHeaderProps) {
   const cls = `ui-app-header ui-app-header--${variant}`
   const trailingCls = [
     'ui-app-header__action',
