@@ -1,7 +1,10 @@
+import { useState } from 'react'
+import AppHeader from '../components/ui/AppHeader.jsx'
 import { Button } from '../components/ui/Button.jsx'
 import CycleIndicator from '../components/ui/CycleIndicator.jsx'
 import { Icon } from '../components/ui/Icon.jsx'
 import TaskCard, { TaskCardDropSlot } from '../components/ui/TaskCard.jsx'
+import { TextField } from '../components/ui/TextField.jsx'
 import './UiGalleryPage.css'
 
 const PALETTE_TOKENS = [
@@ -36,6 +39,10 @@ const CATEGORY_TOKENS = [
 const ICON_NAMES = ['chevron-left', 'trash-2', 'plus', 'minus', 'bell', 'x']
 
 function UiGalleryPage() {
+  const [filledValue, setFilledValue] = useState('Buy groceries')
+  const [emptyValue, setEmptyValue] = useState('')
+  const [errorValue, setErrorValue] = useState('')
+
   return (
     <div id="ui-gallery">
       <header className="ui-gallery-header">
@@ -154,12 +161,69 @@ function UiGalleryPage() {
         </div>
       </section>
 
-      {/* Mount point: Input component */}
       <section
-        className="ui-gallery-section ui-placeholder"
+        className="ui-gallery-section"
+        aria-labelledby="ui-app-header-heading"
+      >
+        <h2 id="ui-app-header-heading">App Header</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <AppHeader
+            variant="detail"
+            title="Task Details"
+            onBack={() => {}}
+            trailingIcon="trash-2"
+            trailingLabel="Delete task"
+            destructive
+            onTrailing={() => {}}
+          />
+          <AppHeader variant="settings" title="Settings" onBack={() => {}} />
+          <AppHeader variant="home" title="Just TODO" />
+          <AppHeader
+            variant="focus"
+            title="Focus Session"
+            onBack={() => {}}
+            trailingIcon="x"
+            trailingLabel="End session"
+            onTrailing={() => {}}
+          />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
         aria-labelledby="ui-input-heading"
       >
         <h2 id="ui-input-heading">Input</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <TextField
+            id="ui-input-empty"
+            label="Empty"
+            value={emptyValue}
+            onChange={(e) => setEmptyValue(e.target.value)}
+            placeholder="Task title"
+          />
+          <TextField
+            id="ui-input-filled"
+            label="Filled"
+            value={filledValue}
+            onChange={(e) => setFilledValue(e.target.value)}
+          />
+          <TextField
+            id="ui-input-error"
+            label="Error"
+            value={errorValue}
+            onChange={(e) => setErrorValue(e.target.value)}
+            placeholder="Task title"
+            error="Title is required"
+          />
+          <TextField
+            id="ui-input-disabled"
+            label="Disabled"
+            value="Locked task"
+            onChange={() => {}}
+            disabled
+          />
+        </div>
       </section>
 
       <section
