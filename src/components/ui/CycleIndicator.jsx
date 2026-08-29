@@ -1,6 +1,10 @@
 import './CycleIndicator.css'
 
-export default function CycleIndicator({ current, total = 4, longBreak = false }) {
+export default function CycleIndicator({
+  current,
+  total = 4,
+  longBreak = false,
+}) {
   const safeTotal = Math.max(1, Math.round(total))
   const safeCurrent = Math.min(Math.max(Math.round(current), 1), safeTotal)
 

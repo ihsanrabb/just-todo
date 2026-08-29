@@ -1,6 +1,18 @@
+import { useState } from 'react'
+import AppHeader from '../components/ui/AppHeader.jsx'
 import { Button } from '../components/ui/Button.jsx'
+import { CategoryChip } from '../components/ui/CategoryChip.jsx'
 import CycleIndicator from '../components/ui/CycleIndicator.jsx'
+import { Dialog } from '../components/ui/Dialog.jsx'
+import { EmptyState } from '../components/ui/EmptyState.jsx'
+import { Icon } from '../components/ui/Icon.jsx'
+import { PermissionPrimingCard } from '../components/ui/PermissionPrimingCard.jsx'
+import { SegmentedControl } from '../components/ui/SegmentedControl.jsx'
+import { Stepper } from '../components/ui/Stepper.jsx'
 import TaskCard, { TaskCardDropSlot } from '../components/ui/TaskCard.jsx'
+import { TextField } from '../components/ui/TextField.jsx'
+import { TimerDisplay } from '../components/ui/TimerDisplay.jsx'
+import { Toast } from '../components/ui/Toast.jsx'
 import './UiGalleryPage.css'
 
 const PALETTE_TOKENS = [
@@ -32,7 +44,17 @@ const CATEGORY_TOKENS = [
   '--color-cat-ink',
 ]
 
+const ICON_NAMES = ['chevron-left', 'trash-2', 'plus', 'minus', 'bell', 'x']
+
 function UiGalleryPage() {
+  const [filledValue, setFilledValue] = useState('Buy groceries')
+  const [emptyValue, setEmptyValue] = useState('')
+  const [errorValue, setErrorValue] = useState('')
+  const [stepperValue, setStepperValue] = useState(1)
+  const [stepperMaxValue, setStepperMaxValue] = useState(8)
+  const [segmentValue, setSegmentValue] = useState('daily')
+  const [selectedCategory, setSelectedCategory] = useState('moss')
+
   return (
     <div id="ui-gallery">
       <header className="ui-gallery-header">
@@ -113,12 +135,158 @@ function UiGalleryPage() {
         </Button>
       </section>
 
-      {/* Mount point: Input component */}
       <section
-        className="ui-gallery-section ui-placeholder"
+        className="ui-gallery-section"
+        aria-labelledby="ui-form-controls-heading"
+      >
+        <h2 id="ui-form-controls-heading">Form controls</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+          <Stepper
+            label="Target"
+            value={stepperValue}
+            onChange={setStepperValue}
+          />
+          <Stepper
+            label="At max"
+            value={stepperMaxValue}
+            onChange={setStepperMaxValue}
+          />
+          <Stepper label="Disabled" value={4} onChange={() => {}} disabled />
+        </div>
+        <SegmentedControl
+          name="Frequency"
+          options={[
+            { label: 'Daily', value: 'daily' },
+            { label: 'Weekly', value: 'weekly' },
+            { label: 'Monthly', value: 'monthly' },
+          ]}
+          value={segmentValue}
+          onChange={setSegmentValue}
+        />
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+          <CategoryChip
+            label="Moss"
+            color="moss"
+            selected={selectedCategory === 'moss'}
+            onClick={() => setSelectedCategory('moss')}
+          />
+          <CategoryChip
+            label="Fern"
+            color="fern"
+            selected={selectedCategory === 'fern'}
+            onClick={() => setSelectedCategory('fern')}
+          />
+          <CategoryChip
+            label="Clay"
+            color="clay"
+            selected={selectedCategory === 'clay'}
+            onClick={() => setSelectedCategory('clay')}
+          />
+          <CategoryChip label="New category" variant="new" />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-icons-heading"
+      >
+        <h2 id="ui-icons-heading">Icons</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          {ICON_NAMES.map((name) => (
+            <div
+              key={name}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+            >
+              <Icon name={name} />
+              <span>{name}</span>
+            </div>
+          ))}
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            gap: '16px',
+          }}
+        >
+          <Icon name="bell" size={16} />
+          <Icon name="bell" size={24} />
+          <Icon name="bell" size={32} />
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          <Icon name="bell" label="Notifications" />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-app-header-heading"
+      >
+        <h2 id="ui-app-header-heading">App Header</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <AppHeader
+            variant="detail"
+            title="Task Details"
+            onBack={() => {}}
+            trailingIcon="trash-2"
+            trailingLabel="Delete task"
+            destructive
+            onTrailing={() => {}}
+          />
+          <AppHeader variant="settings" title="Settings" onBack={() => {}} />
+          <AppHeader variant="home" title="Just TODO" />
+          <AppHeader
+            variant="focus"
+            title="Focus Session"
+            onBack={() => {}}
+            trailingIcon="x"
+            trailingLabel="End session"
+            onTrailing={() => {}}
+          />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
         aria-labelledby="ui-input-heading"
       >
         <h2 id="ui-input-heading">Input</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <TextField
+            id="ui-input-empty"
+            label="Empty"
+            value={emptyValue}
+            onChange={(e) => setEmptyValue(e.target.value)}
+            placeholder="Task title"
+          />
+          <TextField
+            id="ui-input-filled"
+            label="Filled"
+            value={filledValue}
+            onChange={(e) => setFilledValue(e.target.value)}
+          />
+          <TextField
+            id="ui-input-error"
+            label="Error"
+            value={errorValue}
+            onChange={(e) => setErrorValue(e.target.value)}
+            placeholder="Task title"
+            error="Title is required"
+          />
+          <TextField
+            id="ui-input-disabled"
+            label="Disabled"
+            value="Locked task"
+            onChange={() => {}}
+            disabled
+          />
+        </div>
       </section>
 
       <section
@@ -211,6 +379,79 @@ function UiGalleryPage() {
           <CycleIndicator current={1} total={4} />
           <CycleIndicator current={3} total={4} />
           <CycleIndicator current={4} total={4} longBreak />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-timer-display-heading"
+      >
+        <h2 id="ui-timer-display-heading">Timer Display</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          <TimerDisplay
+            remainingSeconds={1499}
+            totalMinutes={25}
+            task="Deep work"
+          />
+          <TimerDisplay
+            remainingSeconds={750}
+            totalMinutes={25}
+            phase="Focus"
+          />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-overlays-heading"
+      >
+        <h2 id="ui-overlays-heading">Overlays</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+          <Dialog
+            title="Delete this task?"
+            confirmLabel="Discard"
+            cancelLabel="Keep going"
+            destructive
+            onConfirm={() => {}}
+            onCancel={() => {}}
+          >
+            This task and its progress history will be permanently deleted.
+          </Dialog>
+          <EmptyState
+            title="No tasks yet"
+            body="Add your first task to start tracking progress."
+            actionLabel="Add task"
+            onAction={() => {}}
+          />
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '16px',
+            marginTop: '24px',
+          }}
+        >
+          <Toast
+            message="Task deleted"
+            actionLabel="Undo"
+            onAction={() => {}}
+          />
+          <Toast
+            message="3 tasks completed today"
+            actionLabel="View"
+            onAction={() => {}}
+          />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-permission-priming-heading"
+      >
+        <h2 id="ui-permission-priming-heading">Permission Priming</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          <PermissionPrimingCard onAllow={() => {}} onDismiss={() => {}} />
         </div>
       </section>
 

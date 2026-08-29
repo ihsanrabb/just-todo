@@ -1,0 +1,32 @@
+.ui-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 32px 24px;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+
+  .ui-empty-state-icon {
+    color: var(--color-text-disabled);
+    margin-bottom: 4px;
+  }
+
+  .ui-empty-state-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .ui-empty-state-body {
+    font-family: var(--font-sans);
+    margin: 0 0 8px;
+  }
+
+  .ui-button {
+    min-height: 44px;
+  }
+}
