@@ -1,0 +1,91 @@
+.ui-button {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.ui-button--full {
+  width: 100%;
+}
+
+.ui-button--primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+  }
+
+  &:active:not(:disabled) {
+    background: var(--color-primary-pressed);
+  }
+
+  &:disabled {
+    background: var(--color-surface-alt);
+    color: var(--color-text-disabled);
+  }
+}
+
+.ui-button--secondary {
+  background: var(--color-surface-alt);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  &:disabled {
+    color: var(--color-text-disabled);
+  }
+}
+
+.ui-button--ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+
+  &:hover:not(:disabled) {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    color: var(--color-text-disabled);
+  }
+}
+
+.ui-button--destructive {
+  background: var(--color-danger);
+  color: var(--color-on-primary);
+
+  &:hover:not(:disabled) {
+    opacity: 0.85;
+  }
+
+  &:disabled {
+    background: var(--color-surface-alt);
+    color: var(--color-text-disabled);
+  }
+}
