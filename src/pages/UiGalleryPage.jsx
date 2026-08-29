@@ -1,10 +1,16 @@
 import { useState } from 'react'
 import AppHeader from '../components/ui/AppHeader.jsx'
 import { Button } from '../components/ui/Button.jsx'
+import { CategoryChip } from '../components/ui/CategoryChip.jsx'
 import CycleIndicator from '../components/ui/CycleIndicator.jsx'
+import { Dialog } from '../components/ui/Dialog.jsx'
+import { EmptyState } from '../components/ui/EmptyState.jsx'
 import { Icon } from '../components/ui/Icon.jsx'
+import { SegmentedControl } from '../components/ui/SegmentedControl.jsx'
+import { Stepper } from '../components/ui/Stepper.jsx'
 import TaskCard, { TaskCardDropSlot } from '../components/ui/TaskCard.jsx'
 import { TextField } from '../components/ui/TextField.jsx'
+import { Toast } from '../components/ui/Toast.jsx'
 import './UiGalleryPage.css'
 
 const PALETTE_TOKENS = [
@@ -42,6 +48,10 @@ function UiGalleryPage() {
   const [filledValue, setFilledValue] = useState('Buy groceries')
   const [emptyValue, setEmptyValue] = useState('')
   const [errorValue, setErrorValue] = useState('')
+  const [stepperValue, setStepperValue] = useState(1)
+  const [stepperMaxValue, setStepperMaxValue] = useState(8)
+  const [segmentValue, setSegmentValue] = useState('daily')
+  const [selectedCategory, setSelectedCategory] = useState('moss')
 
   return (
     <div id="ui-gallery">
@@ -121,6 +131,57 @@ function UiGalleryPage() {
         <Button variant="primary" fullWidth>
           Full Width Primary
         </Button>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-form-controls-heading"
+      >
+        <h2 id="ui-form-controls-heading">Form controls</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+          <Stepper
+            label="Target"
+            value={stepperValue}
+            onChange={setStepperValue}
+          />
+          <Stepper
+            label="At max"
+            value={stepperMaxValue}
+            onChange={setStepperMaxValue}
+          />
+          <Stepper label="Disabled" value={4} onChange={() => {}} disabled />
+        </div>
+        <SegmentedControl
+          name="Frequency"
+          options={[
+            { label: 'Daily', value: 'daily' },
+            { label: 'Weekly', value: 'weekly' },
+            { label: 'Monthly', value: 'monthly' },
+          ]}
+          value={segmentValue}
+          onChange={setSegmentValue}
+        />
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+          <CategoryChip
+            label="Moss"
+            color="moss"
+            selected={selectedCategory === 'moss'}
+            onClick={() => setSelectedCategory('moss')}
+          />
+          <CategoryChip
+            label="Fern"
+            color="fern"
+            selected={selectedCategory === 'fern'}
+            onClick={() => setSelectedCategory('fern')}
+          />
+          <CategoryChip
+            label="Clay"
+            color="clay"
+            selected={selectedCategory === 'clay'}
+            onClick={() => setSelectedCategory('clay')}
+          />
+          <CategoryChip label="New category" variant="new" />
+        </div>
       </section>
 
       <section
@@ -316,6 +377,50 @@ function UiGalleryPage() {
           <CycleIndicator current={1} total={4} />
           <CycleIndicator current={3} total={4} />
           <CycleIndicator current={4} total={4} longBreak />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-overlays-heading"
+      >
+        <h2 id="ui-overlays-heading">Overlays</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+          <Dialog
+            title="Delete this task?"
+            confirmLabel="Discard"
+            cancelLabel="Keep going"
+            destructive
+            onConfirm={() => {}}
+            onCancel={() => {}}
+          >
+            This task and its progress history will be permanently deleted.
+          </Dialog>
+          <EmptyState
+            title="No tasks yet"
+            body="Add your first task to start tracking progress."
+            actionLabel="Add task"
+            onAction={() => {}}
+          />
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '16px',
+            marginTop: '24px',
+          }}
+        >
+          <Toast
+            message="Task deleted"
+            actionLabel="Undo"
+            onAction={() => {}}
+          />
+          <Toast
+            message="3 tasks completed today"
+            actionLabel="View"
+            onAction={() => {}}
+          />
         </div>
       </section>
 
