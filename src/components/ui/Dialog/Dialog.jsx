@@ -1,5 +1,5 @@
 import './Dialog.css'
-import { Button } from './Button.jsx'
+import { Button } from '../Button'
 
 export function Dialog({
   title,

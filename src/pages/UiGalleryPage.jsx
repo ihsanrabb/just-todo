@@ -1,18 +1,21 @@
 import { useState } from 'react'
-import AppHeader from '../components/ui/AppHeader.jsx'
-import { Button } from '../components/ui/Button.jsx'
-import { CategoryChip } from '../components/ui/CategoryChip.jsx'
-import CycleIndicator from '../components/ui/CycleIndicator.jsx'
-import { Dialog } from '../components/ui/Dialog.jsx'
-import { EmptyState } from '../components/ui/EmptyState.jsx'
-import { Icon } from '../components/ui/Icon.jsx'
-import { PermissionPrimingCard } from '../components/ui/PermissionPrimingCard.jsx'
-import { SegmentedControl } from '../components/ui/SegmentedControl.jsx'
-import { Stepper } from '../components/ui/Stepper.jsx'
-import TaskCard, { TaskCardDropSlot } from '../components/ui/TaskCard.jsx'
-import { TextField } from '../components/ui/TextField.jsx'
-import { TimerDisplay } from '../components/ui/TimerDisplay.jsx'
-import { Toast } from '../components/ui/Toast.jsx'
+import {
+  AppHeader,
+  Button,
+  CategoryChip,
+  CycleIndicator,
+  Dialog,
+  EmptyState,
+  Icon,
+  PermissionPrimingCard,
+  SegmentedControl,
+  Stepper,
+  TaskCard,
+  TaskCardDropSlot,
+  TextField,
+  TimerDisplay,
+  Toast,
+} from '../components/ui'
 import './UiGalleryPage.css'
 
 const PALETTE_TOKENS = [

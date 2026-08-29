@@ -1,5 +1,5 @@
 import { isRouteErrorResponse, useNavigate, useRouteError } from 'react-router'
-import { EmptyState } from '../components/ui/EmptyState.jsx'
+import { EmptyState } from '../components/ui/EmptyState'
 
 // Doubles as the router's ErrorBoundary and its catch-all route. Rendered as a
 // plain route there is no error, which is exactly the not-found case.

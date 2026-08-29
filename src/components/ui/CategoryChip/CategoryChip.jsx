@@ -1,5 +1,5 @@
 import './CategoryChip.css'
-import { Icon } from './Icon.jsx'
+import { Icon } from '../Icon'
 
 export function CategoryChip({
   label,

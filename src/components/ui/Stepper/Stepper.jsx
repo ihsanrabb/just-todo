@@ -1,6 +1,6 @@
 import { useId, useState } from 'react'
 import './Stepper.css'
-import { Icon } from './Icon.jsx'
+import { Icon } from '../Icon'
 
 export function Stepper({
   label,

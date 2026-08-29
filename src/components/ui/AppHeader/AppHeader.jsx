@@ -1,5 +1,5 @@
 import './AppHeader.css'
-import { Icon } from './Icon.jsx'
+import { Icon } from '../Icon'
 
 export default function AppHeader({
   variant = 'detail',

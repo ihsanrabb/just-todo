@@ -1,5 +1,5 @@
 import './TaskCard.css'
-import { ProgressDots } from './ProgressDots.jsx'
+import { ProgressDots } from '../ProgressDots'
 
 export default function TaskCard({
   title,

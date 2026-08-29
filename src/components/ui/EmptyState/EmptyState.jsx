@@ -1,6 +1,6 @@
 import './EmptyState.css'
-import { Button } from './Button.jsx'
-import { Icon } from './Icon.jsx'
+import { Button } from '../Button'
+import { Icon } from '../Icon'
 
 export function EmptyState({
   title,
