@@ -6,10 +6,12 @@ import CycleIndicator from '../components/ui/CycleIndicator.jsx'
 import { Dialog } from '../components/ui/Dialog.jsx'
 import { EmptyState } from '../components/ui/EmptyState.jsx'
 import { Icon } from '../components/ui/Icon.jsx'
+import { PermissionPrimingCard } from '../components/ui/PermissionPrimingCard.jsx'
 import { SegmentedControl } from '../components/ui/SegmentedControl.jsx'
 import { Stepper } from '../components/ui/Stepper.jsx'
 import TaskCard, { TaskCardDropSlot } from '../components/ui/TaskCard.jsx'
 import { TextField } from '../components/ui/TextField.jsx'
+import { TimerDisplay } from '../components/ui/TimerDisplay.jsx'
 import { Toast } from '../components/ui/Toast.jsx'
 import './UiGalleryPage.css'
 
@@ -382,6 +384,25 @@ function UiGalleryPage() {
 
       <section
         className="ui-gallery-section"
+        aria-labelledby="ui-timer-display-heading"
+      >
+        <h2 id="ui-timer-display-heading">Timer Display</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          <TimerDisplay
+            remainingSeconds={1499}
+            totalMinutes={25}
+            task="Deep work"
+          />
+          <TimerDisplay
+            remainingSeconds={750}
+            totalMinutes={25}
+            phase="Focus"
+          />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
         aria-labelledby="ui-overlays-heading"
       >
         <h2 id="ui-overlays-heading">Overlays</h2>
@@ -421,6 +442,16 @@ function UiGalleryPage() {
             actionLabel="View"
             onAction={() => {}}
           />
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-permission-priming-heading"
+      >
+        <h2 id="ui-permission-priming-heading">Permission Priming</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          <PermissionPrimingCard onAllow={() => {}} onDismiss={() => {}} />
         </div>
       </section>
 
