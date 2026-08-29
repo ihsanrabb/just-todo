@@ -1,10 +1,23 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router'
 import './index.css'
-import App from './App.jsx'
+import FallbackPage from './pages/FallbackPage.jsx'
+import HomePage from './pages/HomePage.jsx'
+
+const router = createBrowserRouter([
+  { index: true, Component: HomePage, ErrorBoundary: FallbackPage },
+  {
+    path: 'ui',
+    lazy: async () => ({
+      Component: (await import('./pages/UiGalleryPage.jsx')).default,
+    }),
+  },
+  { path: '*', Component: FallbackPage },
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 )
