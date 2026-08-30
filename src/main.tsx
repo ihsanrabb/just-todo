@@ -13,6 +13,12 @@ const router = createBrowserRouter([
       Component: (await import('./pages/UiGalleryPage')).default,
     }),
   },
+  {
+    path: 'home',
+    lazy: async () => ({
+      Component: (await import('./pages/GardenHomePage')).default,
+    }),
+  },
   { path: '*', Component: FallbackPage },
 ])
 
