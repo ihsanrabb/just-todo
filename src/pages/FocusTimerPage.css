@@ -1,0 +1,152 @@
+.focus-timer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--color-bg);
+  min-height: 100svh;
+  text-align: left;
+  border-inline: none;
+  box-sizing: border-box;
+  padding: 16px;
+
+  @media (min-width: 768px) {
+    padding: 32px;
+  }
+}
+
+.focus-timer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.focus-timer__exit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+.focus-timer__cycle {
+  display: flex;
+  justify-content: center;
+}
+
+.focus-timer__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.focus-timer__actions .ui-button--secondary {
+  color: var(--color-danger);
+}
+
+.focus-timer {
+  &.focus-timer--paused .ui-timer-display__phase {
+    color: var(--color-text-secondary);
+  }
+
+  &.focus-timer--short-break .ui-timer-display__phase {
+    color: var(--color-cat-slate);
+  }
+
+  &.focus-timer--work-complete .ui-timer-display__phase {
+    color: var(--color-primary);
+  }
+
+  &.focus-timer--break-complete .ui-timer-display__phase {
+    color: var(--color-cat-ochre);
+  }
+}
+
+.garden-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.garden-card__scene {
+  height: 160px;
+  background: var(--color-surface-alt);
+}
+
+.garden-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.garden-card__stage-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.garden-card__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-on-primary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.garden-card__stage-name {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.garden-card__caption {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.garden-card__track {
+  width: 100%;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-alt);
+  overflow: hidden;
+}
+
+.garden-card__track-fill {
+  width: 48%;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+}
+
+.garden-card__bounds {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
