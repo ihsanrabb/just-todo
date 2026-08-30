@@ -6,10 +6,13 @@ import {
   CycleIndicator,
   Dialog,
   EmptyState,
+  GardenStrip,
   Icon,
   type IconName,
   PermissionPrimingCard,
+  Plant,
   SegmentedControl,
+  STAGE_NAMES,
   Stepper,
   TaskCard,
   TaskCardDropSlot,
@@ -410,6 +413,53 @@ function UiGalleryPage() {
             phase="Focus"
           />
         </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-garden-plant-heading"
+      >
+        <h2 id="ui-garden-plant-heading">Garden Plant</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          {STAGE_NAMES.map((name) => (
+            <div
+              key={name}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+            >
+              <Plant stage={name} />
+              <span>{name}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+          {[0, 3, 12, 30, 60].map((sessions) => (
+            <div
+              key={sessions}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
+              }}
+            >
+              <Plant sessions={sessions} />
+              <span>{sessions} sessions</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className="ui-gallery-section"
+        aria-labelledby="ui-garden-strip-heading"
+      >
+        <h2 id="ui-garden-strip-heading">Garden Strip</h2>
+        <GardenStrip />
       </section>
 
       <section
