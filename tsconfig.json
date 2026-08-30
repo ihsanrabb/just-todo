@@ -30,5 +30,5 @@
     "moduleDetection": "force",
     "skipLibCheck": true
   },
-  "include": ["src", "vite.config.js", "eslint.config.js"]
+  "include": ["src", "vite.config.js"]
 }
