@@ -1,0 +1,43 @@
+.garden-strip {
+  --gs-bg: #e7e2d6;
+  --gs-soil: #43302f;
+  --gs-grass-h: 20px;
+  --gs-soil-h: 32px;
+
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--gs-bg);
+  height: calc(var(--gs-grass-h) + var(--gs-soil-h) + 64px);
+}
+
+.garden-strip__ground {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: calc(var(--gs-grass-h) + var(--gs-soil-h));
+  background: linear-gradient(
+    to bottom,
+    var(--color-cat-fern) 0,
+    var(--color-cat-fern) var(--gs-grass-h),
+    var(--gs-soil) var(--gs-grass-h),
+    var(--gs-soil) 100%
+  );
+}
+
+.garden-strip__plants {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 16px;
+}
+
+/* Scale down the 96px native sprite for the strip; DESIGN.md flags the
+   sprites as non-transparent, so a card edge may still show behind each plant. */
+.garden-strip .plant {
+  width: 48px;
+  height: 48px;
+}
