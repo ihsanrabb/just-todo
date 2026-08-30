@@ -19,6 +19,12 @@ const router = createBrowserRouter([
       Component: (await import('./pages/GardenHomePage')).default,
     }),
   },
+  {
+    path: 'task-detail',
+    lazy: async () => ({
+      Component: (await import('./pages/TaskDetailPage')).default,
+    }),
+  },
   { path: '*', Component: FallbackPage },
 ])
 
