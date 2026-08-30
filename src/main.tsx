@@ -25,6 +25,12 @@ const router = createBrowserRouter([
       Component: (await import('./pages/TaskDetailPage')).default,
     }),
   },
+  {
+    path: 'focus-timer',
+    lazy: async () => ({
+      Component: (await import('./pages/FocusTimerPage')).default,
+    }),
+  },
   { path: '*', Component: FallbackPage },
 ])
 
