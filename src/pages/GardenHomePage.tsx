@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router'
 import './GardenHomePage.css'
 import {
   Button,
@@ -52,6 +53,7 @@ const DUMMY_TASKS: {
 ]
 
 export default function GardenHomePage() {
+  const navigate = useNavigate()
   return (
     <div className="garden-home">
       <div className="garden-home__header">
@@ -64,6 +66,7 @@ export default function GardenHomePage() {
             type="button"
             className="garden-home-header__action"
             aria-label="Settings"
+            onClick={() => navigate('/settings')}
           >
             ⚙
           </button>
@@ -103,6 +106,8 @@ export default function GardenHomePage() {
                   category={t.category}
                   value={t.value}
                   target={t.target}
+                  onPlay={() => navigate('/focus-timer')}
+                  onActivate={() => navigate('/task-detail')}
                 />
               </li>
             ))}

@@ -12,6 +12,8 @@ export type TaskCardProps = {
   value?: number
   target?: number
   state?: TaskCardState
+  onPlay?: () => void
+  onActivate?: () => void
 }
 
 export default function TaskCard({
@@ -21,6 +23,8 @@ export default function TaskCard({
   value = 0,
   target = 0,
   state,
+  onPlay,
+  onActivate,
 }: TaskCardProps) {
   const completed = value >= target
   const overTarget = value > target
@@ -56,19 +60,47 @@ export default function TaskCard({
           <circle cx="15" cy="19" r="1" />
         </svg>
       </span>
-      <div className="task-card__body">
-        <div className="task-card__header">
-          <span className="task-card__dot" style={dotStyle} />
-          <h3 className="task-card__title">{title}</h3>
+      {onActivate ? (
+        <button type="button" className="task-card__body" onClick={onActivate}>
+          <div className="task-card__header">
+            <span className="task-card__dot" style={dotStyle} />
+            <h3 className="task-card__title">{title}</h3>
+          </div>
+          <p className="task-card__description">{description}</p>
+          <div className="task-card__progress">
+            <ProgressDots value={value} target={target} showCount />
+            <span className="task-card__count">
+              {value}/{target}
+            </span>
+          </div>
+        </button>
+      ) : (
+        <div className="task-card__body">
+          <div className="task-card__header">
+            <span className="task-card__dot" style={dotStyle} />
+            <h3 className="task-card__title">{title}</h3>
+          </div>
+          <p className="task-card__description">{description}</p>
+          <div className="task-card__progress">
+            <ProgressDots value={value} target={target} showCount />
+            <span className="task-card__count">
+              {value}/{target}
+            </span>
+          </div>
         </div>
-        <p className="task-card__description">{description}</p>
-        <div className="task-card__progress">
-          <ProgressDots value={value} target={target} showCount />
-          <span className="task-card__count">
-            {value}/{target}
-          </span>
-        </div>
-      </div>
+      )}
+      {onPlay ? (
+        <button
+          type="button"
+          className="task-card__play"
+          aria-label="Start focus session"
+          onClick={onPlay}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z" fill="currentColor" />
+          </svg>
+        </button>
+      ) : null}
     </article>
   )
 }
