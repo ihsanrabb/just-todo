@@ -10,6 +10,7 @@ const X_GLYPH = (
 
 const GLYPHS = {
   'chevron-left': <polyline points="15 18 9 12 15 6" />,
+  'chevron-right': <polyline points="9 18 15 12 9 6" />,
   'trash-2': (
     <>
       <polyline points="3 6 5 6 21 6" />
@@ -49,9 +50,26 @@ export function Icon({ name, size = 24, label, className }: IconProps) {
   if (!glyph) return null
 
   const cls = ['ui-icon', className].filter(Boolean).join(' ')
-  const a11yProps = label
-    ? { role: 'img', 'aria-label': label }
-    : { 'aria-hidden': true, focusable: 'false' as const }
+
+  if (label) {
+    return (
+      <svg
+        className={cls}
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        role="img"
+      >
+        <title>{label}</title>
+        {glyph}
+      </svg>
+    )
+  }
 
   return (
     <svg
@@ -64,7 +82,8 @@ export function Icon({ name, size = 24, label, className }: IconProps) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      {...a11yProps}
+      aria-hidden="true"
+      focusable="false"
     >
       {glyph}
     </svg>
