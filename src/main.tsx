@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import './index.css'
 import FallbackPage from './pages/FallbackPage'
-import HomePage from './pages/HomePage'
+import LandingPage from './pages/LandingPage'
 
 const router = createBrowserRouter([
-  { index: true, Component: HomePage, ErrorBoundary: FallbackPage },
+  { index: true, Component: LandingPage, ErrorBoundary: FallbackPage },
   {
     path: 'ui',
     lazy: async () => ({
@@ -29,6 +29,12 @@ const router = createBrowserRouter([
     path: 'focus-timer',
     lazy: async () => ({
       Component: (await import('./pages/FocusTimerPage')).default,
+    }),
+  },
+  {
+    path: 'settings',
+    lazy: async () => ({
+      Component: (await import('./pages/SettingsPage')).default,
     }),
   },
   { path: '*', Component: FallbackPage },

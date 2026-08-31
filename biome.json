@@ -29,7 +29,17 @@
     }
   },
   "linter": {
-    "enabled": false
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "error"
+      },
+      "style": {
+        "useComponentExportOnlyModules": "warn"
+      }
+    }
   },
   "assist": {
     "enabled": true,

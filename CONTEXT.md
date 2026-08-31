@@ -9,11 +9,10 @@ app — no backend, no accounts, data lives on the device.
 
 | Piece | Role |
 | --- | --- |
-| React (JSX, no TypeScript) | UI |
+| React + TypeScript | UI |
 | Vite | dev server and production build |
 | pnpm | package manager |
-| Biome | formatting and import organization |
-| ESLint | linting (React hooks, fast-refresh rules) |
+| Biome | formatting, import organization, linting |
 | husky + commitlint | pre-commit formatting, Conventional Commits enforced |
 | Plain CSS | styling — no framework, no preprocessor, no CSS-in-JS |
 
