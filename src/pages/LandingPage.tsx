@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router'
-import { Button, GardenStrip, StatusBar } from '../components/ui'
+import { Button, GardenStrip } from '../components/ui'
 import './LandingPage.css'
 
 export default function LandingPage() {
@@ -7,7 +7,6 @@ export default function LandingPage() {
 
   return (
     <div className="landing">
-      <StatusBar />
       <main className="landing__main">
         <div className="landing__hero">
           <GardenStrip />
