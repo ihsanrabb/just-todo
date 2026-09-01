@@ -31,6 +31,12 @@
   }
 }
 
+.landing__hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .landing__title {
   font-family: var(--font-heading);
   font-size: 32px;
