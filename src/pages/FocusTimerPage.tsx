@@ -5,7 +5,6 @@ import {
   CycleIndicator,
   GardenStrip,
   Icon,
-  StatusBar,
   TimerDisplay,
   WakeLockPill,
 } from '../components/ui'
@@ -17,7 +16,6 @@ type FocusTimerAction = {
 
 type FocusTimerState = {
   modifierClass: string
-  statusBarTime: string
   wakeLockLabel: string | null
   cycle: { current: number; total: number; longBreak?: boolean }
   timer: {
@@ -40,7 +38,6 @@ type FocusTimerState = {
 const STATES = {
   workRunning: {
     modifierClass: '',
-    statusBarTime: '9:41',
     wakeLockLabel: 'Screen staying on',
     cycle: { current: 2, total: 4 },
     timer: {
@@ -61,7 +58,6 @@ const STATES = {
   },
   paused: {
     modifierClass: 'focus-timer--paused',
-    statusBarTime: '9:47',
     wakeLockLabel: null,
     cycle: { current: 2, total: 4 },
     timer: {
@@ -85,7 +81,6 @@ const STATES = {
   },
   shortBreakRunning: {
     modifierClass: 'focus-timer--short-break',
-    statusBarTime: '10:16',
     wakeLockLabel: 'Screen staying on',
     cycle: { current: 2, total: 4 },
     timer: {
@@ -106,7 +101,6 @@ const STATES = {
   },
   workComplete: {
     modifierClass: 'focus-timer--work-complete',
-    statusBarTime: '10:21',
     wakeLockLabel: null,
     cycle: { current: 3, total: 4 },
     timer: {
@@ -130,7 +124,6 @@ const STATES = {
   },
   breakComplete: {
     modifierClass: 'focus-timer--break-complete',
-    statusBarTime: '10:26',
     wakeLockLabel: null,
     cycle: { current: 3, total: 4 },
     timer: {
@@ -163,7 +156,6 @@ export default function FocusTimerPage() {
 
   return (
     <div className={rootClassName}>
-      <StatusBar time={DUMMY_STATE.statusBarTime} />
       <div className="focus-timer__header">
         {DUMMY_STATE.wakeLockLabel ? (
           <WakeLockPill label={DUMMY_STATE.wakeLockLabel} />

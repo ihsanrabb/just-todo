@@ -7,7 +7,6 @@ import {
   Dialog,
   EmptyState,
   Icon,
-  StatusBar,
 } from '../components/ui'
 
 const CATEGORIES: { label: string; color: CategoryColor; count: number }[] = [
@@ -99,7 +98,6 @@ export default function SettingsPage() {
 
   return (
     <div className="settings">
-      <StatusBar />
       <AppHeader
         variant="settings"
         title="Settings"
