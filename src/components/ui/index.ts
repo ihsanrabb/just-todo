@@ -24,8 +24,6 @@ export type {
   SegmentedControlProps,
 } from './SegmentedControl'
 export { SegmentedControl } from './SegmentedControl'
-export type { StatusBarProps } from './StatusBar'
-export { StatusBar } from './StatusBar'
 export type { StepperProps } from './Stepper'
 export { Stepper } from './Stepper'
 export type { TaskCardProps, TaskCardState } from './TaskCard'
