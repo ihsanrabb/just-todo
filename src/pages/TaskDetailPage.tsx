@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router'
 import './TaskDetailPage.css'
 import {
   AppHeader,
@@ -48,9 +49,6 @@ function NewCategoryPanel() {
         >
           Category name
         </label>
-        {/* Bespoke input, not TextField: needs a surface-alt background, an
-            accent focus ring, and focus-on-mount, none of which TextField
-            exposes without editing its shared CSS. */}
         <input
           ref={inputRef}
           id="new-category-name"
@@ -87,10 +85,11 @@ export default function TaskDetailPage() {
   const [taskType, setTaskType] = useState('Recurring')
   const [sessions, setSessions] = useState(1)
   const [showNewCategory, setShowNewCategory] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <div className="task-detail">
-      <AppHeader title="New task" onBack={() => {}} />
+      <AppHeader title="New task" onBack={() => navigate(-1)} />
       <div className="task-detail__content">
         <div className="task-detail__form">
           <div className="form-section">
