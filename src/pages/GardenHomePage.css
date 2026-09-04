@@ -8,10 +8,10 @@
   text-align: left;
   border-inline: none;
   box-sizing: border-box;
-  padding: 16px;
+  padding: 16px 16px 88px;
 
   @media (min-width: 768px) {
-    padding: 32px;
+    padding: 32px 32px 88px;
   }
 }
 
@@ -25,7 +25,22 @@
   display: none;
 }
 
+.garden-home > .ui-button {
+  position: fixed;
+  inset-inline: 16px;
+  bottom: 16px;
+  z-index: 5;
+  width: auto;
+  max-width: 560px;
+  margin-inline: auto;
+  box-shadow: var(--shadow-floating);
+}
+
 @media (min-width: 1024px) {
+  .garden-home {
+    padding-bottom: 32px;
+  }
+
   .garden-home-header .ui-button {
     display: block;
   }
