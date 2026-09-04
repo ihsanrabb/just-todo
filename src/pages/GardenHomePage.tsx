@@ -62,13 +62,16 @@ export default function GardenHomePage() {
             <h1 className="garden-home-header__title">Today</h1>
             <p className="garden-home-header__subtitle">Thursday 28 August</p>
           </div>
+          <Button variant="primary" onClick={() => {}}>
+            NEW TASK
+          </Button>
           <button
             type="button"
             className="garden-home-header__action"
             aria-label="Settings"
             onClick={() => navigate('/settings')}
           >
-            ⚙
+            <img alt="settings" src="/settings.png" width={22} height={22} />
           </button>
         </div>
       </div>
